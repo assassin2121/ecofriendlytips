@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco-Friendly Tip of the Day</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.card {
+  position: relative;
+  background: #ffffffee;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  text-align: center;
+  max-width: 650px;
+  animation: fadeIn 2s ease;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #1b5e20;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.3rem;
+  color: #2e2e2e;
+  font-weight: 500;
+}
+
+.leaf {
+  font-size: 2.5rem;
+  color: #2e7d32;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #1b5e20;
+  font-style: italic;
+}
+
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="card">
+    <div class="leaf">🌱</div>
+    <h1>Green Tip</h1>
+    <p id="tip"></p>
+    <div class="footer">Let’s make the Earth greener together 🌍</div>
+  </div>  <script>
+    const tips = [
+      "Plant more trees in your community.",
+      "Grow native plants that support local wildlife.",
+      "Start a rooftop or balcony garden.",
+      "Use indoor plants to purify the air.",
+      "Join a tree plantation drive.",
+      "Create a vertical garden at home.",
+      "Adopt a tree and take care of it.",
+      "Convert empty plots into community gardens.",
+      "Protect green spaces in your neighborhood.",
+      "Avoid cutting trees unnecessarily.",
+      "Use mulch in gardens to conserve soil moisture.",
+      "Encourage schools to start green campuses.",
+      "Promote afforestation in barren lands.",
+      "Switch to organic gardening practices.",
+      "Use compost instead of chemical fertilizers.",
+      "Support organizations planting trees globally.",
+      "Grow fruit trees at home.",
+      "Create bird-friendly spaces with trees.",
+      "Plant flowering plants for pollinators.",
+      "Join a green club in your locality.",
+      "Support reforestation projects.",
+      "Plant trees along sidewalks and streets.",
+      "Grow creepers on walls for natural cooling.",
+      "Convert lawns into wildflower meadows.",
+      "Protect old trees in your area.",
+      "Celebrate birthdays by planting trees.",
+      "Adopt sustainable landscaping techniques.",
+      "Plant bamboo for fast greenery.",
+      "Grow medicinal plants in your garden.",
+      "Encourage tree-based farming systems.",
+      "Help restore mangroves near coasts.",
+      "Use tree shades instead of umbrellas when possible.",
+      "Support green belt initiatives in cities.",
+      "Plant shade trees near homes to save energy.",
+      "Create butterfly gardens with greenery.",
+      "Encourage green walls in schools/offices.",
+      "Join hands to protect urban forests.",
+      "Start a tree adoption program in your society.",
+      "Encourage neighbors to plant trees together.",
+      "Plant nectar-rich plants for bees.",
+      "Use tree leaves for natural compost.",
+      "Plant windbreak trees in open areas.",
+      "Celebrate festivals with green plantation drives.",
+      "Grow climbers to reduce heat on walls.",
+      "Organize green competitions in schools.",
+      "Encourage terrace farming for greenery.",
+      "Plant perennials that need less water.",
+      "Preserve sacred groves and traditional green spaces.",
+      "Use rain gardens to grow plants.",
+      "Encourage offices to adopt green campuses.",
+      "Plant hedges instead of concrete walls.",
+      "Grow vines around fences.",
+      "Create parks for kids with more greenery.",
+      "Adopt sustainable irrigation methods for trees.",
+      "Avoid using herbicides in green areas.",
+      "Encourage agroforestry practices.",
+      "Support urban green corridors.",
+      "Grow fast-growing trees for quick greenery.",
+      "Promote greenery drives in your company.",
+      "Create eco-clubs to promote tree plantation.",
+      "Celebrate Earth Day by planting greenery.",
+      "Replace lawns with edible gardens.",
+      "Encourage seed sharing in the community.",
+      "Preserve natural forests from deforestation.",
+      "Support tribal afforestation efforts.",
+      "Grow oxygen-rich trees near homes.",
+      "Avoid unnecessary pruning of trees.",
+      "Promote eco-friendly landscaping.",
+      "Plant flowering creepers on balconies.",
+      "Adopt degraded land and green it.",
+      "Create fruit orchards for communities.",
+      "Support village green drives.",
+      "Protect wetlands and green cover around them.",
+      "Adopt permaculture practices.",
+      "Protect biodiversity-rich green belts.",
+      "Plant roadside trees to reduce dust.",
+      "Encourage organic nurseries.",
+      "Promote school students to plant one tree yearly.",
+      "Create herbal gardens in schools.",
+      "Organize green festivals with plantations.",
+      "Adopt carbon-neutral plantation programs.",
+      "Create seed banks for greenery.",
+      "Plant greenery in unused government lands.",
+      "Protect grazing lands by planting more grass.",
+      "Support bee-friendly green initiatives.",
+      "Plant eco-friendly ground cover instead of cement.",
+      "Encourage corporate tree plantation drives.",
+      "Grow shade plants in playgrounds.",
+      "Create rooftop parks in urban spaces.",
+      "Encourage universities to build green labs.",
+      "Use biodegradable pots for planting.",
+      "Promote eco-tourism by supporting greenery.",
+      "Plant climate-resilient tree species.",
+      "Adopt roads for greening projects.",
+      "Grow hedgerows for natural fences.",
+      "Support farmer-led agroforestry.",
+      "Start green gifting traditions.",
+      "Preserve rare plant species by planting more.",
+      "Promote traditional sacred tree planting.",
+      "Convert dumping grounds into green areas."
+    ];
+
+    document.getElementById("tip").innerText = tips[Math.floor(Math.random() * tips.length)];
+  </script></body>
+</html>
